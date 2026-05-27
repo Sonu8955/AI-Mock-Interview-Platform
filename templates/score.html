@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Interview Result</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+
+            background:
+            linear-gradient(135deg,#020617,#0f172a,#111827);
+
+            color:white;
+
+            padding:40px;
+        }
+
+        .container{
+
+            max-width:900px;
+
+            margin:auto;
+
+            background:#111827;
+
+            padding:40px;
+
+            border-radius:25px;
+
+            box-shadow:
+            0 0 30px rgba(0,0,0,0.5);
+        }
+
+        h1{
+
+            text-align:center;
+
+            margin-bottom:30px;
+
+            color:#38bdf8;
+        }
+
+        .score-box{
+
+            text-align:center;
+
+            margin-bottom:40px;
+        }
+
+        .score-circle{
+
+            width:180px;
+
+            height:180px;
+
+            border-radius:50%;
+
+            margin:auto;
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:center;
+
+            font-size:42px;
+
+            font-weight:bold;
+
+            background:
+            conic-gradient(
+            #22c55e calc({{score}} * 1%),
+            #1e293b 0%
+            );
+
+            color:white;
+
+            box-shadow:
+            0 0 25px rgba(34,197,94,0.4);
+        }
+
+        .feedback-container{
+
+            margin-top:40px;
+        }
+
+        .feedback-card{
+
+            background:#1e293b;
+
+            padding:25px;
+
+            border-radius:18px;
+
+            margin-bottom:25px;
+
+            box-shadow:
+            0 0 15px rgba(0,0,0,0.3);
+
+            transition:0.3s;
+        }
+
+        .feedback-card:hover{
+
+            transform:translateY(-5px);
+        }
+
+        .status{
+
+            font-size:22px;
+
+            font-weight:bold;
+
+            margin-bottom:15px;
+        }
+
+        .excellent{
+
+            color:#22c55e;
+        }
+
+        .good{
+
+            color:#38bdf8;
+        }
+
+        .average{
+
+            color:#facc15;
+        }
+
+        .weak{
+
+            color:#ef4444;
+        }
+
+        .feedback-text{
+
+            line-height:1.8;
+
+            font-size:16px;
+
+            color:#e2e8f0;
+
+            white-space:pre-line;
+        }
+
+        .btn{
+
+            display:block;
+
+            width:100%;
+
+            text-align:center;
+
+            padding:16px;
+
+            margin-top:35px;
+
+            border-radius:15px;
+
+            text-decoration:none;
+
+            color:white;
+
+            font-size:18px;
+
+            font-weight:bold;
+
+            background:
+            linear-gradient(135deg,#2563eb,#06b6d4);
+
+            transition:0.3s;
+        }
+
+        .btn:hover{
+
+            transform:scale(1.02);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>
+
+            🤖 AI Interview Feedback
+
+        </h1>
+
+        <div class="score-box">
+
+            <div class="score-circle">
+
+                {{score}}%
+
+            </div>
+
+        </div>
+
+        <div class="feedback-container">
+
+            {% for item in feedback %}
+
+            <div class="feedback-card">
+
+                {% if "Excellent" in item %}
+
+                <div class="status excellent">
+
+                    ✅ Excellent Performance
+
+                </div>
+
+                {% elif "Good" in item %}
+
+                <div class="status good">
+
+                    👍 Good Performance
+
+                </div>
+
+                {% elif "Average" in item %}
+
+                <div class="status average">
+
+                    🙂 Average Performance
+
+                </div>
+
+                {% else %}
+
+                <div class="status weak">
+
+                    ❌ Weak Performance
+
+                </div>
+
+                {% endif %}
+
+                <div class="feedback-text">
+
+                    {{item}}
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <a href="/" class="btn">
+
+            🚀 Start Again
+
+        </a>
+
+    </div>
+
+</body>
+
+</html>
